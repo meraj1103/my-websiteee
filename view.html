@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>View Image</title>
+<link rel="stylesheet" href="view.css">
+</head>
+<body>
+
+<a class="back" href="index.html">⬅ Back</a>
+
+<div class="page">
+    <img id="mainImg" class="main-img">
+    <div class="text" id="text"></div>
+    <div class="gifs" id="gifs"></div>
+</div>
+
+<script>
+const params=new URLSearchParams(window.location.search);
+const id=params.get("id");
+const img=params.get("img");
+
+document.getElementById("mainImg").src=img;
+
+const texts={
+    1:"first look of tomboy gundya 😎",
+    2:"second look with cool vibes but no brain 🧠🤣",
+    3:"third look with stylish appearance but always in problems 😅",
+    4:"now this is gundya in her full glory with mixed vibes 🤩"
+};
+document.getElementById("text").innerText=texts[id];
+
+const gifsData={
+    1:["gifs/pp.gif.webp"],
+    2:["gifs/g3.gif.webp"],
+    3:["gifs/ps.gif.webp"],
+    4:["gifs/g4.gif.webp","gifs/g8.gif.webp"]
+};
+const gifBox=document.getElementById("gifs");
+gifsData[id].forEach(g=>{
+    const img=document.createElement("img");
+    img.src=g;
+    gifBox.appendChild(img);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: radial-gradient(circle at top, #0b0b2e, #000);
+    color: white;
+}
+
+/* RGB AUTO-COLOR STARS */
+.stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    transition: transform 0.2s ease-out;
+}
+
+.stars::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: red;
+    border-radius: 50%;
+    box-shadow:
+        50px 100px red,
+        120px 300px yellow,
+        250px 150px lime,
+        400px 500px cyan,
+        600px 200px blue,
+        800px 400px magenta,
+        1000px 100px orange,
+        300px 700px pink,
+        700px 900px violet,
+        900px 600px teal,
+        1100px 350px lime,
+        440px 50px red,
+        150px 850px yellow,
+        750px 750px cyan,
+        950px 450px blue,
+        1150px 150px magenta,
+        333px 333px pink,
+        666px 666px violet,
+        999px 999px teal,
+        120px 120px red,
+        111px 210px yellow,
+        310px 410px lime,
+        510px 610px cyan,
+        710px 810px blue,
+        910px 110px magenta,
+        130px 910px pink,
+        410px 210px violet,
+        610px 410px teal,
+        810px 610px red,
+        210px 310px yellow,
+        410px 510px lime,
+        610px 710px cyan,
+        810px 910px blue,
+        230px 130px magenta,
+        430px 330px pink,
+        630px 530px violet,
+        830px 730px teal,
+        140px 440px red,
+        340px 640px yellow,
+        540px 840px lime,
+        740px 140px cyan,
+        940px 340px blue,
+        160px 240px magenta,
+        360px 440px pink,
+        560px 640px violet,
+        760px 840px teal,
+        180px 540px red,
+        380px 740px yellow,
+        580px 940px lime,
+        780px 240px cyan,
+        420px 420px yellow,
+        720px 720px lime,
+        1020px 1020px cyan,
+        1320px 320px blue,
+        520px 220px magenta,
+        820px 620px pink,
+        1300px 250px orange;
+    animation: twinkle 2s infinite alternate, hueShift 20s linear infinite;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hueShift {
+    from {
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
+/* GLASS CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2em;
+}
+
+/* GALLERY GRID */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card p {
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px) {
+    .card img {
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+}
+
+.gundya-name {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 40px 0;
+    text-transform: uppercase;
+
+    .gundya-name {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 28px;
+        color: white;
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+    }
+
+    .secret-link {
+        display: block;
+        margin-top: 5px;
+        font-size: 16px;
+        color: #ff69b4;
+        text-decoration: none;
+        text-shadow: 0 0 5px #ff69b4;
+        transition: all 0.3s ease;
+    }
+
+    .secret-link:hover {
+        color: #fff;
+        text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
+    }
+
+    /* Glow effect */
+    text-shadow: 0 0 10px #ff00ff,
+    0 0 20px #ff00ff,
+    0 0 30px #ff00ff,
+    0 0 40px #ff00ff,
+    0 0 50px #ff00ff;
+
+    /* Soft pulsing animation */
+    animation: glowText 2.5s infinite alternate;
+}
+
+@keyframes glowText {
+    0% {
+        text-shadow:
+            0 0 5px #ff00ff,
+            0 0 10px #ff00ff,
+            0 0 15px #ff00ff,
+            0 0 20px #ff00ff,
+            0 0 30px #ff00ff;
+    }
+
+    50% {
+        text-shadow:
+            0 0 15px #ff00ff,
+            0 0 25px #ff00ff,
+            0 0 35px #ff00ff,
+            0 0 45px #ff00ff,
+            0 0 60px #ff00ff;
+    }
+
+    100% {
+        text-shadow:
+            0 0 5px #ff00ff,
+            0 0 10px #ff00ff,
+            0 0 15px #ff00ff,
+            0 0 20px #ff00ff,
+            0 0 30px #ff00ff;
+    }
+}
+.sss {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow:
+        0 0 5px red,
+        0 0 10px orange,
+        0 0 15px yellow,
+        0 0 20px lime,
+        0 0 25px cyan,
+        0 0 30px blue,
+        0 0 35px magenta;
+    animation: rainbowGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes rainbowGlow {
+    0% {
+        text-shadow:
+            0 0 5px red,
+            0 0 10px orange,
+            0 0 15px yellow,
+            0 0 20px lime,
+            0 0 25px cyan,
+            0 0 30px blue,
+            0 0 35px magenta;
+    }
+
+    50% {
+        text-shadow:
+            0 0 10px magenta,
+            0 0 20px blue,
+            0 0 30px cyan,
+            0 0 40px lime,
+            0 0 50px yellow,
+            0 0 60px orange,
+            0 0 70px red;
+    }
+
+    100% {
+        text-shadow:
+            0 0 5px red,
+            0 0 10px orange,
+            0 0 15px yellow,
+            0 0 20px lime,
+            0 0 25px cyan,
+            0 0 30px blue,
+            0 0 35px magenta;
+    }
+}
+.wave {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 4px;
+    color: white;
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        lime,
+        cyan,
+        blue,
+        magenta,
+        red
+    );
+
+    background-size: 300% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: waveMove 5s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+
+@keyframes waveMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
